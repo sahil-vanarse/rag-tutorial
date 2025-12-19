@@ -26,7 +26,7 @@ New manufacturing techniques are being implemented to reduce costs."""
 semantic_splitter = SemanticChunker(
     embeddings=HuggingFaceEmbeddings(model_name="sentence-transformers/all-MiniLM-L6-v2"),
     breakpoint_threshold_type="percentile",  # or "standard_deviation"
-    breakpoint_threshold_amount=70
+    breakpoint_threshold_amount=70 # Proven because it is not too aggressive nor too conservative, suppose we read news paper it has multiple up down in the semantics because news paper contains multiple inforamtion about different topics, but suppose report card where it is mostly depends on the perticular topic, so to get the perfect threshold we can use percentile 70
 )
 
 chunks = semantic_splitter.split_text(tesla_text)
